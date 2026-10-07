@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Anjali M Patil | Developer Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        /* Soft Pastel Palette */
+        --bg: #f5f3f7;
+        --card-bg: rgba(255, 255, 255, 0.85);
+        --border: rgba(200, 195, 215, 0.4);
+        --text-primary: #2d3142;
+        --text-secondary: #5c6278;
+
+        --pastel-purple: #e2d9f3;
+        --pastel-purple-text: #6b5b95;
+        --pastel-blue: #d0e8f2;
+        --pastel-blue-text: #3a7ca5;
+        --pastel-mint: #d4f0f0;
+        --pastel-mint-text: #2c7a7b;
+        --pastel-peach: #fce1e4;
+        --pastel-peach-text: #c05c6f;
+        --pastel-yellow: #fff1c5;
+        --pastel-yellow-text: #8c7300;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Plus Jakarta Sans", sans-serif;
+        line-height: 1.7;
+        max-width: 880px;
+        margin: 0 auto;
+        padding: 60px 24px 80px 24px;
+        background-color: var(--bg);
+        color: var(--text-primary);
+        position: relative;
+        min-height: 100vh;
+      }
+
+      /* Subtle Pastel Background Blurs */
+      body::before,
+      body::after {
+        content: "";
+        position: fixed;
+        border-radius: 50%;
+        filter: blur(120px);
+        opacity: 0.6;
+        z-index: -1;
+      }
+      body::before {
+        width: 400px;
+        height: 400px;
+        background: var(--pastel-purple);
+        top: -100px;
+        left: -100px;
+      }
+      body::after {
+        width: 450px;
+        height: 450px;
+        background: var(--pastel-peach);
+        bottom: -100px;
+        right: -100px;
+      }
+
+      header {
+        margin-bottom: 56px;
+      }
+
+      .header-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .badge-status {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--pastel-mint);
+        color: var(--pastel-mint-text);
+        border: 1px solid rgba(44, 122, 123, 0.2);
+        padding: 6px 16px;
+        border-radius: 20px;
+        font-size: 0.88rem;
+        font-weight: 600;
+      }
+
+      .status-dot {
+        width: 8px;
+        height: 8px;
+        background-color: var(--pastel-mint-text);
+        border-radius: 50%;
+      }
+
+      .github-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--card-bg);
+        color: var(--text-primary);
+        border: 1px solid var(--border);
+        padding: 6px 16px;
+        border-radius: 20px;
+        font-size: 0.88rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.2s ease;
+      }
+
+      .github-btn:hover {
+        background: #ffffff;
+        box-shadow: 0 4px 12px rgba(107, 91, 149, 0.15);
+      }
+
+      h1 {
+        font-size: 3.2rem;
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        color: var(--text-primary);
+        margin-bottom: 12px;
+      }
+
+      .hero-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: var(--pastel-purple-text);
+        margin-bottom: 16px;
+      }
+
+      .bio {
+        font-size: 1.1rem;
+        color: var(--text-secondary);
+        max-width: 700px;
+      }
+
+      section {
+        margin-bottom: 56px;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 24px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      h2::after {
+        content: "";
+        flex: 1;
+        height: 2px;
+        background: linear-gradient(
+          90deg,
+          var(--pastel-purple),
+          var(--pastel-peach),
+          transparent
+        );
+        border-radius: 2px;
+      }
+
+      /* Card Styling */
+      .card-list {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .card {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        padding: 28px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.03);
+        backdrop-filter: blur(10px);
+        transition:
+          transform 0.25s ease,
+          box-shadow 0.25s ease;
+      }
+
+      .card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 32px rgba(107, 91, 149, 0.1);
+      }
+
+      .card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 16px;
+        margin-bottom: 12px;
+      }
+
+      .card h3 {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--text-primary);
+      }
+
+      .card p {
+        color: var(--text-secondary);
+        font-size: 1rem;
+      }
+
+      /* Tags */
+      .tag {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.78rem;
+        padding: 4px 12px;
+        border-radius: 12px;
+        font-weight: 600;
+        white-space: nowrap;
+      }
+
+      .tag-purple {
+        background: var(--pastel-purple);
+        color: var(--pastel-purple-text);
+      }
+
+      .tag-blue {
+        background: var(--pastel-blue);
+        color: var(--pastel-blue-text);
+      }
+
+      .tag-peach {
+        background: var(--pastel-peach);
+        color: var(--pastel-peach-text);
+      }
+
+      /* Stack Grid */
+      .stack-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 20px;
+      }
+
+      .stack-card {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        padding: 24px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.03);
+      }
+
+      .stack-card h4 {
+        font-size: 0.88rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--text-secondary);
+        margin-bottom: 16px;
+      }
+
+      .pills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .pill {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.88rem;
+        font-weight: 600;
+        padding: 8px 14px;
+        border-radius: 10px;
+      }
+
+      .pill-purple {
+        background: var(--pastel-purple);
+        color: var(--pastel-purple-text);
+      }
+      .pill-blue {
+        background: var(--pastel-blue);
+        color: var(--pastel-blue-text);
+      }
+      .pill-mint {
+        background: var(--pastel-mint);
+        color: var(--pastel-mint-text);
+      }
+      .pill-peach {
+        background: var(--pastel-peach);
+        color: var(--pastel-peach-text);
+      }
+      .pill-yellow {
+        background: var(--pastel-yellow);
+        color: var(--pastel-yellow-text);
+      }
+
+      /* Footer */
+      footer {
+        margin-top: 64px;
+        padding-top: 32px;
+        border-top: 1px solid var(--border);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 16px;
+        color: var(--text-secondary);
+        font-size: 0.95rem;
+      }
+
+      .contact-links {
+        display: flex;
+        gap: 16px;
+      }
+
+      .contact-links a {
+        color: var(--pastel-purple-text);
+        font-weight: 600;
+        text-decoration: none;
+        padding: 6px 14px;
+        background: rgba(255, 255, 255, 0.6);
+        border-radius: 8px;
+        border: 1px solid var(--border);
+        transition: background 0.2s ease;
+      }
+
+      .contact-links a:hover {
+        background: #ffffff;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="header-top">
+        <div class="badge-status">
+          <span class="status-dot"></span> CSIT Student & Developer
+        </div>
+        <a
+          href="https://github.com/anjalipatils"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="github-btn"
+        >
+          GitHub Profile ↗
+        </a>
+      </div>
+      <h1>Anjali M Patil</h1>
+      <p class="hero-title">
+        Computer Science & Information Technology Student
+      </p>
+      <p class="bio">
+        Passionate about constructing efficient logic, building robust database
+        schemas, and understanding core computer system architecture. Currently
+        exploring backend systems, C/C++ programming, and relational data
+        management.
+      </p>
+    </header>
+
+    <main>
+      <!-- About Me Section -->
+      <section>
+        <h2>About Me</h2>
+        <div class="card">
+          <p>
+            I am currently pursuing my degree in <strong>CSIT</strong>, focusing
+            on core programming concepts, data structures, and database systems.
+            I enjoy solving algorithmic challenges, working with relational
+            databases using SQL, and learning how low-level systems function
+            under the hood.
+          </p>
+        </div>
+      </section>
+
+      <!-- Projects / Work Section -->
+      <section>
+        <h2>Featured Projects</h2>
+        <div class="card-list">
+          <article class="card">
+            <div class="card-header">
+              <h3>Line Editor Application</h3>
+              <span class="tag tag-purple">C Project</span>
+            </div>
+            <p>
+              Collaboratively developed a modular C line editor utilizing
+              low-level memory management, dynamic memory allocations, custom
+              header files, and structured file operations.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-header">
+              <h3>Relational Database Schema Design</h3>
+              <span class="tag tag-peach">DBMS / MySQL</span>
+            </div>
+            <p>
+              Designed and implemented relational database models with foreign
+              key constraints, primary keys, and optimized join queries for
+              structured data retrieval.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- Learning Logs Section -->
+      <section>
+        <h2>Featured Learning Logs</h2>
+        <div class="card-list">
+          <article class="card">
+            <div class="card-header">
+              <h3>Building Core Logic in C & Algorithmic Problem Solving</h3>
+              <span class="tag tag-blue">Data Structures</span>
+            </div>
+            <p>
+              Documenting lower-level memory management, pointer arithmetic,
+              recursion, and continuous algorithm practice on platform
+              environments like LeetCode and HackerRank.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-header">
+              <h3>Database Management & SQL Queries</h3>
+              <span class="tag tag-peach">Database</span>
+            </div>
+            <p>
+              Understanding normalization, table structures, transactional
+              updates, and writing multi-table JOIN operations in MySQL.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- Tech Stack Section -->
+      <section>
+        <h2>Technical Stack</h2>
+        <div class="stack-grid">
+          <div class="stack-card">
+            <h4>Languages & Fundamentals</h4>
+            <div class="pills">
+              <span class="pill pill-purple">C</span>
+              <span class="pill pill-blue">C++</span>
+              <span class="pill pill-peach">DBMS</span>
+              <span class="pill pill-yellow">SQL</span>
+            </div>
+          </div>
+          <div class="stack-card">
+            <h4>Tools & Platforms</h4>
+            <div class="pills">
+              <span class="pill pill-mint">VS Code</span>
+              <span class="pill pill-purple">Git</span>
+              <span class="pill pill-blue">GitHub</span>
+              <span class="pill pill-yellow">MySQL</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>© 2026 Anjali M Patil. All rights reserved.</p>
+      <div class="contact-links">
+        <a
+          href="https://github.com/anjalipatils"
+          target="_blank"
+          rel="noopener noreferrer"
+          >GitHub</a
+        >
+      </div>
+    </footer>
+  </body>
+</html>
